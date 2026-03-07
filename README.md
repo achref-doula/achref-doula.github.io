@@ -1,9 +1,9 @@
 # achref.d.gitlab.io — Personal Academic Website
 
-Your personal academic website, ready to deploy on GitLab Pages.
+personal academic website, deployed on GitLab Pages.
 
 ---
-
+<!--
 ## How to Publish (First Time Setup)
 
 ### Step 1: Create the GitLab Repository
@@ -171,3 +171,4 @@ achref.d.gitlab.io/
 - **404 error**: Repo must be public; check Deploy → Pages; wait 1-2 min.
 - **Images broken**: Use relative paths (`images/profile.jpg` not `/images/profile.jpg`).
 - **Old content showing**: Hard refresh with Ctrl+Shift+R.
+-->
