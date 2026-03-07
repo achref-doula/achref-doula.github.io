@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achref Doula - AI Research Scientist</title>
+    <meta name="description" content="Achref Doula - AI Research Scientist at TU Darmstadt. Uncertainty Quantification, Conformal Prediction, Neuro-Symbolic AI, LLMs for Autonomous Driving.">
+    <meta name="author" content="Achref Doula">
+    <meta name="keywords" content="Achref Doula, AI, Machine Learning, Uncertainty Quantification, Conformal Prediction, Autonomous Driving, TU Darmstadt">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Achref Doula - AI Research Scientist">
+    <meta property="og:description" content="AI Research Scientist working on safe, transparent, and reliable AI systems.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://achref.d.gitlab.io">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Academicons for Google Scholar icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --accent: #2b5c8a;
+            --accent-light: #e8f0f8;
+            --dark: #1a1a1a;
+            --gray: #555;
+            --light-gray: #888;
+            --border: #e0e0e0;
+            --bg: #ffffff;
+            --sidebar-bg: #f8f9fa;
+            --max-width: 1080px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--gray);
+            background: var(--bg);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+        a:hover { opacity: 0.75; }
+
+        /* ===== LAYOUT ===== */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            background: var(--sidebar-bg);
+            padding: 40px 28px;
+            border-right: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 20px;
+            border: 3px solid var(--border);
+        }
+
+        .sidebar-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark);
+            text-align: center;
+            margin-bottom: 4px;
+        }
+
+        .sidebar-title {
+            font-size: 13px;
+            color: var(--light-gray);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-info {
+            list-style: none;
+            font-size: 13.5px;
+        }
+
+        .sidebar-info li {
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sidebar-info li i, .sidebar-info li .ai {
+            color: var(--light-gray);
+            width: 18px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .sidebar-info li a { color: var(--gray); }
+        .sidebar-info li a:hover { color: var(--accent); }
+
+        /* ===== MAIN CONTENT ===== */
+        .main {
+            padding: 40px 48px;
+        }
+
+        .main h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 16px;
+        }
+
+        .main h1 .wave { display: inline-block; animation: wave 2.5s infinite; transform-origin: 70% 70%; }
+        @keyframes wave {
+            0%, 60%, 100% { transform: rotate(0deg); }
+            10% { transform: rotate(14deg); }
+            20% { transform: rotate(-8deg); }
+            30% { transform: rotate(14deg); }
+            40% { transform: rotate(-4deg); }
+            50% { transform: rotate(10deg); }
+        }
+
+        .bio {
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 32px;
+            max-width: 700px;
+        }
+
+        /* ===== SECTION HEADINGS ===== */
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark);
+            margin: 36px 0 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+        }
+
+        /* ===== NEWS / HIGHLIGHTS ===== */
+        .highlights {
+            list-style: none;
+            margin-bottom: 12px;
+        }
+
+        .highlights li {
+            padding: 5px 0;
+            font-size: 14px;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .highlights li .date {
+            color: var(--light-gray);
+            font-size: 13px;
+            min-width: 90px;
+            font-weight: 500;
+        }
+
+        /* ===== PUBLICATIONS ===== */
+        .pub-list { list-style: none; }
+
+        .pub-item {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 20px;
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border);
+            align-items: start;
+        }
+
+        .pub-item:last-child { border-bottom: none; }
+
+        .pub-thumb {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 6px;
+            background: var(--accent-light);
+            border: 1px solid var(--border);
+        }
+
+        .pub-thumb-placeholder {
+            width: 120px;
+            height: 80px;
+            border-radius: 6px;
+            background: var(--accent-light);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: var(--accent);
+            font-weight: 700;
+            opacity: 0.5;
+        }
+
+        .pub-info { }
+
+        .pub-title {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 14.5px;
+            line-height: 1.5;
+            margin-bottom: 4px;
+        }
+
+        .pub-authors {
+            font-size: 13px;
+            color: var(--light-gray);
+            margin-bottom: 4px;
+        }
+
+        .pub-authors .me { color: var(--dark); font-weight: 600; }
+
+        .pub-venue {
+            font-size: 13px;
+            font-style: italic;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        .pub-links { display: flex; gap: 8px; flex-wrap: wrap; }
+
+        .pub-links a {
+            font-size: 12px;
+            padding: 3px 10px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--gray);
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .pub-links a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-light);
+            opacity: 1;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            margin-top: 60px;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            font-size: 12px;
+            color: var(--light-gray);
+            text-align: center;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                position: relative;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                padding: 30px 20px;
+            }
+            .main { padding: 24px 20px; }
+            .pub-item { grid-template-columns: 1fr; }
+            .pub-thumb, .pub-thumb-placeholder { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar">
+        <!-- REPLACE: Add your profile photo as images/profile.jpg -->
+        <img src="images/profile.jpg" alt="Achref Doula" class="profile-img"
+             onerror="this.style.background='#e8f0f8'; this.style.display='flex'; this.alt='AD';">
+
+        <div class="sidebar-name">Achref Doula</div>
+        <div class="sidebar-title">AI Research Scientist</div>
+
+        <ul class="sidebar-info">
+            <li><i class="fas fa-map-marker-alt"></i> Darmstadt, Germany</li>
+            <li><i class="fas fa-building"></i> TU Darmstadt</li>
+            <li><i class="fas fa-phone"></i> +49xxxxxxxx</li>
+            <li><i class="fas fa-envelope"></i> <a href="mailto:xx@xx.com">xx@xx.com</a></li>
+            <li><i class="ai ai-google-scholar"></i> <a href="https://scholar.google.de/citations?user=tHuVxtUAAAAJ" target="_blank">Google Scholar</a></li>
+            <li><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/achref-doula" target="_blank">LinkedIn</a></li>
+            <li><i class="fab fa-github"></i> <a href="https://gitlab.com/achref.d" target="_blank">GitLab</a></li>
+            <li><i class="fab fa-researchgate"></i> <a href="https://www.researchgate.net/profile/Achref-Doula" target="_blank">ResearchGate</a></li>
+        </ul>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main">
+
+        <h1>Hi, I'm Achref. <span class="wave">👋</span></h1>
+
+        <div class="bio">
+            I am a Post-Doctoral Researcher at the <a href="https://www.informatik.tu-darmstadt.de/telekooperation/" target="_blank">Telecooperation Lab</a>,
+            Technical University of Darmstadt, working under the supervision of
+            <a href="https://www.informatik.tu-darmstadt.de/telekooperation/staff_tk/tk_staff_details_22784.en.jsp" target="_blank">Prof. Dr. Max Mühlhäuser</a>.
+            I obtained my PhD (<em>Summa Cum Laude</em>) at TU Darmstadt in 2025
+            (<a href="#">my dissertation</a>).
+            Previously, I was a Visiting Post-Doc at <a href="https://en.tongji.edu.cn/" target="_blank">Tongji University</a> in Shanghai.
+        </div>
+
+        <div class="bio">
+            My research focuses on building <strong>safe, transparent, and reliable AI systems</strong>
+            for dynamic urban environments. I work on <strong>uncertainty quantification</strong> (especially conformal prediction),
+            <strong>neuro-symbolic reasoning</strong>, <strong>LLM-based planning and perception</strong>,
+            and <strong>human-AI interaction</strong> for autonomous systems.
+            I am particularly interested in providing formal safety guarantees for AI models
+            operating in safety-critical settings.
+        </div>
+
+        <div class="bio">
+            During my PhD, I led the federally funded <em>SemUrban</em> project (€100K, <a href="https://softwarecampus.de/en/" target="_blank">Software Campus</a> / BMBF)
+            on semantically enriched deep learning for autonomous driving.
+            I have published 10+ peer-reviewed papers at top venues including
+            <strong>CoRL</strong>, <strong>IROS</strong>, <strong>CVPR</strong>, <strong>ISMAR</strong>,
+            <strong>NAACL</strong>, and <strong>ICRA</strong>, with 40+ citations.
+        </div>
+
+        <!-- ===== RECENT HIGHLIGHTS ===== -->
+        <h2 class="section-title">Recent Highlights</h2>
+
+        <ul class="highlights">
+            <li><span class="date">[Mar, 2026]</span> 🇨🇳 Completed visiting post-doc at Tongji University, Shanghai.</li>
+            <li><span class="date">[2025]</span> 🎓 PhD awarded with <em>Summa Cum Laude</em> — highest honors.</li>
+            <li><span class="date">[2025]</span> 🔥 Paper accepted to <strong>NAACL 2025</strong> System Demos (CLEAR-Command).</li>
+            <li><span class="date">[2025]</span> 📄 New preprint: <em>SafePath</em> — conformal prediction for safe LLM-based navigation.</li>
+            <li><span class="date">[2025]</span> 📄 New preprint: <em>AEXL</em> — active explainable learning via LLMs.</li>
+            <li><span class="date">[Nov, 2024]</span> 🤘 Paper accepted to <strong>CoRL 2024</strong> (KRPS — conformal prediction for autonomous perception).</li>
+            <li><span class="date">[Oct, 2024]</span> 🤘 Paper accepted to <strong>IROS 2024</strong> (NeSyMoF — neuro-symbolic motion forecasting).</li>
+            <li><span class="date">[Jun, 2024]</span> 🤘 Paper accepted to <strong>CVPR Workshop 2024</strong> (AR-CP).</li>
+            <li><span class="date">[2022]</span> 🔥 Accepted into <a href="https://softwarecampus.de/en/" target="_blank">Software Campus</a> — €100K research grant from BMBF.</li>
+        </ul>
+
+        <!-- ===== PUBLICATIONS ===== -->
+        <h2 class="section-title">Peer-Reviewed Publications</h2>
+
+        <ul class="pub-list">
+
+            <!-- SafePath -->
+            <li class="pub-item">
+                <div class="pub-thumb-placeholder">SP</div>
+                <div class="pub-info">
+                    <div class="pub-title">SafePath: Conformal Prediction for Safe LLM-Based Autonomous Navigation</div>
+                    <div class="pub-authors"><span class="me">Achref Doula</span>, Max Mühlhäuser, Alejandro Sanchez Guinea</div>
+                    <div class="pub-venue">arXiv 2025 (under review)</div>
+                    <div class="pub-links">
+                        <a href="https://arxiv.org/abs/2505.09427" target="_blank">arXiv</a>
+                        <a href="https://arxiv.org/pdf/2505.09427" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- AEXL -->
+            <li class="pub-item">
+                <div class="pub-thumb-placeholder">AX</div>
+                <div class="pub-info">
+                    <div class="pub-title">AEXL: Enhancing Path Prediction with Active Explainable Learning via Large Language Models</div>
+                    <div class="pub-authors"><span class="me">Achref Doula</span>, Max Mühlhäuser, Alejandro Sanchez Guinea</div>
+                    <div class="pub-venue">2025 (preprint)</div>
+                    <div class="pub-links">
+                        <a href="#" target="_blank">arXiv</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- CLEAR-Command -->
+            <li class="pub-item">
+                <div class="pub-thumb-placeholder">CC</div>
+                <div class="pub-info">
+                    <div class="pub-title">CLEAR-Command: Coordinated Listening, Extraction, and Allocation for Emergency Response with Large Language Models</div>
+                    <div class="pub-authors"><span class="me">Achref Doula</span>, Bela Bohlender, Max Mühlhäuser, Alejandro Sanchez Guinea</div>
+                    <div class="pub-venue">NAACL 2025 — System Demonstrations</div>
+                    <div class="pub-links">
+                        <a href="https://aclanthology.org/2025.naacl-demo/" target="_blank">ACL Anthology</a>
+                        <a href="https://gitlab.com/achref.d/clear-command" target="_blank">Code</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- KRPS - CoRL -->
+            <li class="pub-item">
+                <div class="pub-thumb-placeholder">KR</div>
+                <div class="pub-info">
+                    <div class="pub-title">Conformal Prediction for Semantically-Aware Autonomous Perception in Urban Environments (KRPS)</div>
+                    <div class="pub-authors"><span class="me">Achref Doula</span>, Tobias Güdelhöfer, Max Mühlhäuser, Alejandro Sanchez Guinea</div>
+                    <div class="pub-venue">CoRL 2024</div>
+                    <div class="pub-links">
+                        <a href="https://proceedings.mlr.press/v270/doula25a.html" target="_blank">PMLR</a>
+                        <a href="https://openreview.net/forum?id=aaY5fVFMVf" target="_blank">OpenReview</a>
+                        <a href="https://raw.githubusercontent.com/mlresearch/v270/main/assets/doula25a/doula25a.pdf" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- NeSyMoF - IROS -->
+            <li class="pub-item">
+                <div class="pub-thumb-placeholder">NM</div>
+                <div class="pub-info">
+                    <div class="pub-title">NeSyMoF: A Neuro-Symbolic Model for Motion Forecasting</div>
+                    <div class="pub-authors"><span class="me">Achref Doula</span>, Huijie Yin, Max Mühlhäuser, Alejandro Sanchez Guinea</div>
+                    <div class="pub-venue">IROS 2024</div>
+                    <div class="pub-links">
+                        <a href="https://ieeexplore.ieee.org/document/10801779/" target="_blank">IEEE</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- AR-CP - CVPR Workshop -->
+            <li class="pub-item">
+                <div class="pub-thumb-placeholder">AC</div>
+                <div class="pub-info">
+                    <div class="pub-title">AR-CP: Uncertainty-Aware Perception in Adverse Conditions with Conformal Prediction and Augmented Reality for Assisted Driving</div>
+                    <div class="pub-authors"><span class="me">Achref Doula</span>, Max Mühlhäuser, Alejandro Sanchez Guinea</div>
+                    <div class="pub-venue">CVPR Workshop 2024</div>
+                    <div class="pub-links">
+                        <a href="https://openaccess.thecvf.com/content/CVPR2024W/TCV2024/papers/Doula_AR-CP_Uncertainty-Aware_Perception_in_Adverse_Conditions_with_Conformal_Prediction_and_CVPRW_2024_paper.pdf" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Can You Handle the Truth - ISMAR -->
+            <li class="pub-item">
+                <div class="pub-thumb-placeholder">CT</div>
+                <div class="pub-info">
+                    <div class="pub-title">"Can You Handle the Truth?": Investigating the Effects of AR-Based Visualization of the Uncertainty of Deep Learning Models on Users of Autonomous Vehicles</div>
+                    <div class="pub-authors"><span class="me">Achref Doula</span>, Lennart Schmidt, Max Mühlhäuser, Alejandro Sanchez Guinea</div>
+                    <div class="pub-venue">ISMAR 2023</div>
+                    <div class="pub-links">
+                        <a href="#" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- PointCloudLab - ICRA -->
+            <li class="pub-item">
+                <div class="pub-thumb-placeholder">PC</div>
+                <div class="pub-info">
+                    <div class="pub-title">PointCloudLab: An Environment for 3D Point Cloud Annotation with Adapted Visual Aids and Levels of Immersion</div>
+                    <div class="pub-authors"><span class="me">Achref Doula</span> et al.</div>
+                    <div class="pub-venue">ICRA 2023</div>
+                    <div class="pub-links">
+                        <a href="#" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Visualization ML Uncertainty - AIVR -->
+            <li class="pub-item">
+                <div class="pub-thumb-placeholder">VU</div>
+                <div class="pub-info">
+                    <div class="pub-title">Visualization of Machine Learning Uncertainty in AR-Based See-Through Applications</div>
+                    <div class="pub-authors"><span class="me">Achref Doula</span>, Lennart Schmidt, Max Mühlhäuser, Alejandro Sanchez Guinea</div>
+                    <div class="pub-venue">IEEE AIVR 2022</div>
+                    <div class="pub-links">
+                        <a href="#" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Effects of Level of Detail - VR Workshop -->
+            <li class="pub-item">
+                <div class="pub-thumb-placeholder">LD</div>
+                <div class="pub-info">
+                    <div class="pub-title">Effects of the Level of Detail on the Recognition of City Landmarks in Virtual Environments</div>
+                    <div class="pub-authors"><span class="me">Achref Doula</span>, Philipp Kaufmann, Alejandro Sanchez Guinea, Max Mühlhäuser</div>
+                    <div class="pub-venue">VR Workshops 2022</div>
+                    <div class="pub-links">
+                        <a href="#" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+
+        <!-- ===== FOOTER ===== -->
+        <div class="footer">
+            &copy; 2026 Achref Doula. Last updated March 2026.
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>
