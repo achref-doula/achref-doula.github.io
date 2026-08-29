@@ -204,23 +204,19 @@
             margin-bottom: 15px;
         }
 
-        .research-line {
+        .research-interests {
             max-width: 720px;
-            margin-top: 23px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
+            margin-top: 24px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+            font-size: 13.5px;
+            line-height: 1.7;
         }
 
-        .research-tag {
-            display: inline-block;
-            padding: 5px 9px;
-            border: 1px solid #ccd9e3;
-            border-radius: 4px;
-            background: #fbfdff;
-            color: #34536d;
-            font-size: 12px;
-            line-height: 1.25;
+        .research-interests .label {
+            font-weight: 700;
+            color: var(--ink);
+            margin-right: 6px;
         }
 
         .section {
@@ -420,17 +416,6 @@
             </li>
         </ul>
 
-        <hr class="sidebar-divider">
-
-        <div class="sidebar-label">Research interests</div>
-        <div class="sidebar-topics">
-            Uncertainty quantification<br>
-            Conformal prediction<br>
-            Distribution shift<br>
-            Neuro-symbolic AI<br>
-            LLM reasoning &amp; planning<br>
-            Human–AI decision making
-        </div>
     </aside>
 
     <main class="main">
@@ -464,13 +449,14 @@
                 and repeated human–AI decision processes.
             </p>
 
-            <div class="research-line" aria-label="Research topics">
-                <span class="research-tag">Conformal Prediction</span>
-                <span class="research-tag">Distribution Shift</span>
-                <span class="research-tag">Foundation Models</span>
-                <span class="research-tag">Neuro-Symbolic AI</span>
-                <span class="research-tag">LLM Reasoning</span>
-                <span class="research-tag">Human–AI Interaction</span>
+            <div class="research-interests">
+                <span class="label">Research Interests:</span>
+                Uncertainty Quantification &amp; Conformal Prediction ·
+                Distribution Shift &amp; Calibration Transfer ·
+                Foundation Models &amp; LLM Reasoning ·
+                LLM Post-Training &amp; Evaluation ·
+                Neuro-Symbolic AI ·
+                Human–AI Decision Making
             </div>
         </section>
 
