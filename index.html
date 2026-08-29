@@ -1,685 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Achref Doula | AI, Uncertainty & Foundation Models</title>
-    <meta name="description"
-          content="Achref Doula is a postdoctoral researcher at TU Darmstadt studying reasoning and decision making under uncertainty, foundation models, human-AI interaction, and uncertainty quantification.">
-    <meta name="author" content="Achref Doula">
-    <meta name="keywords"
-          content="Achref Doula, artificial intelligence, uncertainty quantification, conformal prediction, foundation models, large language models, human-AI decision making, TU Darmstadt">
-
-    <meta property="og:title" content="Achref Doula | AI, Uncertainty & Foundation Models">
-    <meta property="og:description"
-          content="Research on reasoning and decision making under uncertainty, foundation models, and human-AI interaction.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://achref.d.gitlab.io">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap"
-          rel="stylesheet">
-
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <style>
-        :root {
-            --ink: #17202a;
-            --text: #4d5966;
-            --muted: #7b8794;
-            --accent: #214f78;
-            --accent-soft: #eef4f8;
-            --border: #dfe5ea;
-            --paper: #ffffff;
-            --sidebar: #f7f9fb;
-            --max-width: 1080px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            color: var(--text);
-            background: var(--paper);
-            line-height: 1.72;
-            font-size: 15px;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        a {
-            color: var(--accent);
-            text-decoration: none;
-            text-underline-offset: 3px;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 260px minmax(0, 1fr);
-            min-height: 100vh;
-            border-left: 1px solid var(--border);
-            border-right: 1px solid var(--border);
-        }
-
-        /* Sidebar */
-        .sidebar {
-            background: var(--sidebar);
-            padding: 42px 30px;
-            border-right: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            overflow-y: auto;
-        }
-
-        .profile-img {
-            width: 168px;
-            height: 168px;
-            border-radius: 8px;
-            object-fit: cover;
-            display: block;
-            margin: 0 auto 22px;
-            border: 1px solid var(--border);
-        }
-
-        .sidebar-name {
-            font-family: "Source Serif 4", Georgia, serif;
-            font-size: 23px;
-            font-weight: 600;
-            color: var(--ink);
-            text-align: center;
-            letter-spacing: -0.01em;
-        }
-
-        .sidebar-title {
-            margin: 6px auto 24px;
-            max-width: 190px;
-            font-size: 12.5px;
-            line-height: 1.55;
-            color: var(--muted);
-            text-align: center;
-        }
-
-        .sidebar-info {
-            list-style: none;
-            font-size: 13px;
-        }
-
-        .sidebar-info li {
-            padding: 6px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .sidebar-info i,
-        .sidebar-info .ai {
-            width: 17px;
-            color: var(--muted);
-            text-align: center;
-            font-size: 13px;
-        }
-
-        .sidebar-info a {
-            color: var(--text);
-        }
-
-        .sidebar-info a:hover {
-            color: var(--accent);
-        }
-
-        .sidebar-divider {
-            border: 0;
-            border-top: 1px solid var(--border);
-            margin: 22px 0;
-        }
-
-        .sidebar-label {
-            margin-bottom: 9px;
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.11em;
-            color: var(--muted);
-        }
-
-        .sidebar-topics {
-            font-size: 12.5px;
-            line-height: 1.7;
-            color: var(--text);
-        }
-
-        /* Main */
-        .main {
-            padding: 48px 54px 36px;
-        }
-
-        .eyebrow {
-            margin-bottom: 7px;
-            color: var(--accent);
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.11em;
-        }
-
-        .main h1 {
-            font-family: "Source Serif 4", Georgia, serif;
-            font-size: 31px;
-            line-height: 1.22;
-            font-weight: 600;
-            color: var(--ink);
-            letter-spacing: -0.015em;
-            margin-bottom: 12px;
-        }
-
-        .lead {
-            max-width: 720px;
-            margin-bottom: 20px;
-            font-size: 16px;
-            line-height: 1.75;
-            color: #3f4b57;
-        }
-
-        .bio {
-            max-width: 720px;
-            margin-bottom: 15px;
-        }
-
-        .research-interests {
-            max-width: 720px;
-            margin-top: 24px;
-            padding-top: 15px;
-            border-top: 1px solid var(--border);
-            font-size: 13.5px;
-            line-height: 1.7;
-        }
-
-        .research-interests .label {
-            font-weight: 700;
-            color: var(--ink);
-            margin-right: 6px;
-        }
-
-        .section {
-            margin-top: 42px;
-        }
-
-        .section-title {
-            font-family: "Source Serif 4", Georgia, serif;
-            font-size: 22px;
-            line-height: 1.25;
-            font-weight: 600;
-            color: var(--ink);
-            margin-bottom: 18px;
-            padding-bottom: 9px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        /* News */
-        .news-list {
-            list-style: none;
-        }
-
-        .news-list li {
-            display: grid;
-            grid-template-columns: 96px 1fr;
-            gap: 13px;
-            padding: 5px 0;
-            font-size: 14px;
-        }
-
-        .news-date {
-            color: var(--muted);
-            font-size: 12.5px;
-            font-variant-numeric: tabular-nums;
-        }
-
-        /* Publications */
-        .pub-list {
-            list-style: none;
-        }
-
-        .pub-item {
-            padding: 0 0 22px;
-            margin-bottom: 22px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .pub-item:last-child {
-            border-bottom: 0;
-            margin-bottom: 0;
-        }
-
-        .pub-header {
-            display: flex;
-            gap: 10px;
-            align-items: baseline;
-            flex-wrap: wrap;
-            margin-bottom: 4px;
-        }
-
-        .venue-badge {
-            flex: 0 0 auto;
-            padding: 2px 7px;
-            border-radius: 3px;
-            background: var(--accent-soft);
-            color: var(--accent);
-            font-size: 10.5px;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-            text-transform: uppercase;
-        }
-
-        .pub-title {
-            color: var(--ink);
-            font-size: 14.5px;
-            line-height: 1.55;
-            font-weight: 600;
-        }
-
-        .pub-authors {
-            margin-top: 3px;
-            color: var(--muted);
-            font-size: 12.8px;
-            line-height: 1.55;
-        }
-
-        .pub-authors .me {
-            color: var(--text);
-            font-weight: 600;
-        }
-
-        .pub-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 7px;
-        }
-
-        .pub-links a {
-            font-size: 11.5px;
-            font-weight: 600;
-        }
-
-        /* Recognition */
-        .compact-list {
-            padding-left: 18px;
-            max-width: 720px;
-        }
-
-        .compact-list li {
-            padding: 3px 0;
-            font-size: 14px;
-        }
-
-        .footer {
-            margin-top: 58px;
-            padding-top: 18px;
-            border-top: 1px solid var(--border);
-            font-size: 11.5px;
-            color: var(--muted);
-        }
-
-        @media (max-width: 780px) {
-            .container {
-                grid-template-columns: 1fr;
-                border: 0;
-            }
-
-            .sidebar {
-                position: relative;
-                height: auto;
-                border-right: 0;
-                border-bottom: 1px solid var(--border);
-                padding: 30px 22px;
-            }
-
-            .profile-img {
-                width: 142px;
-                height: 142px;
-            }
-
-            .main {
-                padding: 34px 22px 28px;
-            }
-
-            .main h1 {
-                font-size: 29px;
-            }
-
-            .news-list li {
-                grid-template-columns: 82px 1fr;
-                gap: 9px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Achref Doula | AI, Uncertainty & Foundation Models</title>
+<meta name="description" content="Achref Doula is a postdoctoral researcher at TU Darmstadt studying reasoning and decision making under uncertainty, foundation models, human-AI interaction, and uncertainty quantification.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{--ink:#18212b;--text:#4b5763;--muted:#7a8692;--accent:#214f78;--border:#dfe5ea;--soft:#fafbfd;--max:980px}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:#fff;font-size:15px;line-height:1.72;-webkit-font-smoothing:antialiased}a{color:var(--accent);text-decoration:none;text-underline-offset:3px}a:hover{text-decoration:underline}.page{max-width:var(--max);margin:0 auto;padding:0 34px 50px}
+.site-header{display:flex;align-items:center;justify-content:space-between;gap:28px;padding:24px 0 20px;border-bottom:1px solid var(--border)}.site-name{font-family:"Source Serif 4",Georgia,serif;font-size:23px;font-weight:600;color:var(--ink);white-space:nowrap}.site-nav{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:18px;font-size:12.5px;font-weight:600}.site-nav a{color:var(--text)}.site-nav a:hover{color:var(--accent)}
+.hero{display:grid;grid-template-columns:175px minmax(0,1fr);gap:38px;padding:46px 0 38px;border-bottom:1px solid var(--border);align-items:start}.profile-img{width:175px;height:175px;object-fit:cover;border-radius:7px;border:1px solid var(--border)}.role{margin-bottom:8px;color:var(--accent);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.10em}h1{font-family:"Source Serif 4",Georgia,serif;font-size:30px;line-height:1.24;font-weight:600;color:var(--ink);letter-spacing:-.015em;margin-bottom:17px}.hero p{max-width:680px;margin-bottom:13px}.research-interests{margin-top:23px;padding:15px 17px;background:var(--soft);border-left:3px solid var(--accent);font-size:13.2px}.research-interests strong{color:var(--ink)}.contact-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;padding-top:17px;border-top:1px solid var(--border);font-size:12.5px;font-weight:500}.contact-row a,.contact-row span{color:var(--text)}.contact-row i,.contact-row .ai{margin-right:5px;color:var(--muted)}
+.section{padding:38px 0 0}.section-header{display:grid;grid-template-columns:170px minmax(0,1fr);gap:28px;align-items:baseline;margin-bottom:18px}.section-title{font-family:"Source Serif 4",Georgia,serif;color:var(--ink);font-size:21px;font-weight:600}.section-note{color:var(--muted);font-size:12.5px}
+.news-list,.pub-list{list-style:none;border-top:1px solid var(--border)}.news-list li{display:grid;grid-template-columns:110px minmax(0,1fr);gap:26px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13.8px}.news-date{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+.pub-item{display:grid;grid-template-columns:110px minmax(0,1fr);gap:26px;padding:17px 0;border-bottom:1px solid var(--border)}.pub-venue{color:var(--accent);font-size:11.5px;font-weight:700;line-height:1.4;text-transform:uppercase;letter-spacing:.03em}.pub-title{color:var(--ink);font-size:14.3px;font-weight:600;line-height:1.5}.pub-authors{margin-top:3px;color:var(--muted);font-size:12.6px}.pub-authors .me{color:var(--text);font-weight:600}.pub-meta{margin-top:7px;display:flex;flex-wrap:wrap;align-items:center;gap:11px;font-size:11.5px;font-weight:600}.pub-meta .note{color:var(--muted);font-weight:500}
+.academic-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}.mini-section{border-top:1px solid var(--border);padding-top:16px}.mini-section h3{font-family:"Source Serif 4",Georgia,serif;color:var(--ink);font-size:18px;font-weight:600;margin-bottom:10px}.compact-list{padding-left:18px}.compact-list li{padding:4px 0;font-size:13.4px}.footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--border);color:var(--muted);font-size:11.5px}
+@media(max-width:760px){.page{padding:0 20px 36px}.site-header{align-items:flex-start;flex-direction:column;gap:10px}.site-nav{justify-content:flex-start;gap:14px}.hero{grid-template-columns:1fr;gap:24px;padding-top:32px}.profile-img{width:145px;height:145px}h1{font-size:27px}.section-header,.news-list li,.pub-item{grid-template-columns:1fr;gap:5px}.academic-grid{grid-template-columns:1fr;gap:28px}}
+</style>
 </head>
-
 <body>
-<div class="container">
-
-    <aside class="sidebar">
-        <img src="images/personal.jpg"
-             alt="Portrait of Achref Doula"
-             class="profile-img">
-
-        <div class="sidebar-name">Achref Doula</div>
-        <div class="sidebar-title">
-            Postdoctoral Researcher<br>
-            AI, Uncertainty &amp; Foundation Models
-        </div>
-
-        <ul class="sidebar-info">
-            <li><i class="fas fa-building"></i> TU Darmstadt</li>
-            <li><i class="fas fa-map-marker-alt"></i> Darmstadt, Germany</li>
-            <li>
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:achref.doula@gmail.com">Email</a>
-            </li>
-            <li>
-                <i class="ai ai-google-scholar"></i>
-                <a href="https://scholar.google.de/citations?user=tHuVxtUAAAAJ"
-                   target="_blank" rel="noopener noreferrer">Google Scholar</a>
-            </li>
-            <li>
-                <i class="fab fa-linkedin"></i>
-                <a href="https://linkedin.com/in/achref-doula"
-                   target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            </li>
-            <li>
-                <i class="fab fa-gitlab"></i>
-                <a href="https://gitlab.com/achref.d"
-                   target="_blank" rel="noopener noreferrer">GitLab</a>
-            </li>
-            <li>
-                <i class="fas fa-file-pdf"></i>
-                <a href="AD_cv.pdf" target="_blank" rel="noopener noreferrer">Curriculum Vitae</a>
-            </li>
-        </ul>
-
-    </aside>
-
-    <main class="main">
-        <section>
-            <div class="eyebrow">Research</div>
-            <h1>Reasoning and decision making under uncertainty</h1>
-
-            <p class="bio">
-                I am a postdoctoral researcher at the
-                <a href="https://www.informatik.tu-darmstadt.de/telekooperation/telecooperation_group/index.en.jsp"
-                   target="_blank" rel="noopener noreferrer">Telecooperation Lab</a>,
-                Technical University of Darmstadt. I received my PhD in Computer Science from
-                TU Darmstadt in 2025 (<em>summa cum laude</em>).
-            </p>
-
-            <p class="lead">
-                My research develops methods for <strong>reliable reasoning and decision making under uncertainty</strong>.
-                It connects statistical reliability in machine learning with <strong>structured reasoning</strong>,
-                <strong>human–AI interaction</strong>, and the <strong>post-training and evaluation of large language models</strong>.
-                I am particularly interested in systems that must remain dependable when data distributions,
-                sensing conditions, model representations, or decision contexts change after development.
-            </p>
-
-            <p class="bio">
-                This agenda builds on three closely related directions:
-                <strong>uncertainty quantification and conformal prediction under distribution shift</strong>;
-                <strong>reliable reasoning and post-training of foundation models</strong>; and
-                <strong>decision mechanisms that use uncertainty to govern interaction between AI systems and human users</strong>.
-                My doctoral work studied these questions in autonomous perception, forecasting, and planning,
-                while current research extends them to calibration transfer, LLM reasoning and safety,
-                and repeated human–AI decision processes.
-            </p>
-
-            <div class="research-interests">
-                <span class="label">Research Interests:</span>
-                Uncertainty Quantification &amp; Conformal Prediction ·
-                Distribution Shift &amp; Calibration Transfer ·
-                Foundation Models &amp; LLM Reasoning ·
-                LLM Post-Training &amp; Evaluation ·
-                Neuro-Symbolic AI ·
-                Human–AI Decision Making
-            </div>
-        </section>
-
-        <section class="section" id="news">
-            <h2 class="section-title">News</h2>
-            <ul class="news-list">
-                <li>
-                    <span class="news-date">May 2026</span>
-                    <span>Received the <strong>ICML 2026 Gold Reviewer Award</strong>.</span>
-                </li>
-                <li>
-                    <span class="news-date">May 2026</span>
-                    <span>
-                        <em>Conformal Calibration Transfer</em> accepted at
-                        <strong>ICML 2026</strong>.
-                    </span>
-                </li>
-                <li>
-                    <span class="news-date">May 2026</span>
-                    <span>
-                        <em>Position: Uncertainty is a Strategic Signal in Human–AI Decision Making</em>
-                        accepted at <strong>ICML 2026</strong>.
-                    </span>
-                </li>
-                <li>
-                    <span class="news-date">Jun 2025</span>
-                    <span>
-                        PhD in Computer Science awarded <em>summa cum laude</em> at TU Darmstadt.
-                    </span>
-                </li>
-                <li>
-                    <span class="news-date">Jul 2025</span>
-                    <span>
-                        Began a research visit at <strong>Tongji University, Shanghai</strong>,
-                        focusing on robust LLM reasoning and decision-making for urban planning.
-                    </span>
-                </li>
-                <li>
-                    <span class="news-date">2025</span>
-                    <span>
-                        <em>SafePath</em>: conformal prediction for uncertainty-aware
-                        LLM-based autonomous navigation.
-                    </span>
-                </li>
-            </ul>
-        </section>
-
-        <section class="section" id="publications">
-            <h2 class="section-title">Selected Publications</h2>
-
-            <ul class="pub-list">
-                <li class="pub-item">
-                    <div class="pub-header">
-                        <span class="venue-badge">ICML 2026</span>
-                        <div class="pub-title">Conformal Calibration Transfer</div>
-                    </div>
-                    <div class="pub-authors">
-                        <span class="me">Achref Doula</span>
-                    </div>
-                    <div class="pub-links">
-                        <a href="https://icml.cc/virtual/2026/poster/61667"
-                           target="_blank" rel="noopener noreferrer">ICML</a>
-                        <a href="https://openreview.net/pdf?id=nw5aekrzBa"
-                           target="_blank" rel="noopener noreferrer">OpenReview</a>
-                        <a href="papers/10054_Conformal_Calibration_Tr.pdf"
-                           target="_blank" rel="noopener noreferrer">PDF</a>
-                        <a href="https://gitlab.com/achref.d/tcc"
-                           target="_blank" rel="noopener noreferrer">Code</a>
-                    </div>
-                </li>
-
-                <li class="pub-item">
-                    <div class="pub-header">
-                        <span class="venue-badge">ICML 2026</span>
-                        <div class="pub-title">
-                            Position: Uncertainty is a Strategic Signal in Human–AI Decision Making
-                        </div>
-                    </div>
-                    <div class="pub-authors">
-                        <span class="me">Achref Doula</span>, Otthein Herzog,
-                        Siegfried Zhiqiang Wu, Max Mühlhäuser
-                    </div>
-                    <div class="pub-links">
-                        <a href="https://icml.cc/virtual/2026/poster/67056"
-                           target="_blank" rel="noopener noreferrer">ICML</a>
-                        <a href="https://openreview.net/pdf?id=vzbCqSwKEI"
-                           target="_blank" rel="noopener noreferrer">OpenReview</a>
-                        <a href="papers/352_Position_Uncertainty_is_a_.pdf"
-                           target="_blank" rel="noopener noreferrer">PDF</a>
-                        <a href="https://gitlab.com/achref.d/gt-haii-position"
-                           target="_blank" rel="noopener noreferrer">Code</a>
-                    </div>
-                </li>
-
-                <li class="pub-item">
-                    <div class="pub-header">
-                        <span class="venue-badge">NAACL 2025</span>
-                        <div class="pub-title">
-                            CLEAR-Command: Coordinated Listening, Extraction, and Allocation
-                            for Emergency Response with Large Language Models
-                        </div>
-                    </div>
-                    <div class="pub-authors">
-                        <span class="me">Achref Doula</span>, Bela Bohlender,
-                        Max Mühlhäuser, Alejandro Sanchez Guinea
-                    </div>
-                    <div class="pub-links">
-                        <a href="https://aclanthology.org/2025.naacl-demo/"
-                           target="_blank" rel="noopener noreferrer">ACL Anthology</a>
-                        <a href="https://gitlab.com/achref.d/clear-command"
-                           target="_blank" rel="noopener noreferrer">Code</a>
-                    </div>
-                </li>
-
-                <li class="pub-item">
-                    <div class="pub-header">
-                        <span class="venue-badge">CoRL 2024</span>
-                        <div class="pub-title">
-                            Conformal Prediction for Semantically-Aware Autonomous Perception
-                            in Urban Environments
-                        </div>
-                    </div>
-                    <div class="pub-authors">
-                        <span class="me">Achref Doula</span>, Tobias Güdelhöfer,
-                        Max Mühlhäuser, Alejandro Sanchez Guinea
-                    </div>
-                    <div class="pub-links">
-                        <a href="https://proceedings.mlr.press/v270/doula25a.html"
-                           target="_blank" rel="noopener noreferrer">PMLR</a>
-                        <a href="https://openreview.net/forum?id=aaY5fVFMVf"
-                           target="_blank" rel="noopener noreferrer">OpenReview</a>
-                        <a href="https://gitlab.com/achref.d/krps"
-                           target="_blank" rel="noopener noreferrer">Code</a>
-                    </div>
-                </li>
-
-                <li class="pub-item">
-                    <div class="pub-header">
-                        <span class="venue-badge">IROS 2024</span>
-                        <div class="pub-title">NeSyMoF: A Neuro-Symbolic Model for Motion Forecasting</div>
-                    </div>
-                    <div class="pub-authors">
-                        <span class="me">Achref Doula</span>, Huijie Yin,
-                        Max Mühlhäuser, Alejandro Sanchez Guinea
-                    </div>
-                    <div class="pub-links">
-                        <a href="https://ieeexplore.ieee.org/document/10801779/"
-                           target="_blank" rel="noopener noreferrer">IEEE</a>
-                    </div>
-                </li>
-
-                <li class="pub-item">
-                    <div class="pub-header">
-                        <span class="venue-badge">arXiv 2025</span>
-                        <div class="pub-title">
-                            SafePath: Conformal Prediction for Safe LLM-Based Autonomous Navigation
-                        </div>
-                    </div>
-                    <div class="pub-authors">
-                        <span class="me">Achref Doula</span>, Max Mühlhäuser,
-                        Alejandro Sanchez Guinea
-                    </div>
-                    <div class="pub-links">
-                        <a href="https://arxiv.org/abs/2505.09427"
-                           target="_blank" rel="noopener noreferrer">arXiv</a>
-                        <a href="https://arxiv.org/pdf/2505.09427"
-                           target="_blank" rel="noopener noreferrer">PDF</a>
-                    </div>
-                </li>
-
-                <li class="pub-item">
-                    <div class="pub-header">
-                        <span class="venue-badge">ISMAR 2023</span>
-                        <div class="pub-title">
-                            “Can You Handle the Truth?”: Investigating AR-Based Visualization
-                            of Deep Learning Uncertainty for Users of Autonomous Vehicles
-                        </div>
-                    </div>
-                    <div class="pub-authors">
-                        <span class="me">Achref Doula</span>, Lennart Schmidt,
-                        Max Mühlhäuser, Alejandro Sanchez Guinea
-                    </div>
-                    <div class="pub-links">
-                        <a href="https://ieeexplore.ieee.org/document/10316420"
-                           target="_blank" rel="noopener noreferrer">IEEE</a>
-                    </div>
-                </li>
-            </ul>
-
-            <p style="margin-top: 12px; font-size: 13px;">
-                For a complete publication list, see
-                <a href="https://scholar.google.de/citations?user=tHuVxtUAAAAJ"
-                   target="_blank" rel="noopener noreferrer">Google Scholar</a>.
-            </p>
-        </section>
-
-        <section class="section" id="recognition">
-            <h2 class="section-title">Research &amp; Academic Service</h2>
-            <ul class="compact-list">
-                <li>
-                    Software Campus Fellowship and BMBF research grant
-                    (<strong>EUR 100,000</strong>), 2022–2025; project lead for SemUrban.
-                </li>
-                <li>
-                    <strong>ICML 2026 Gold Reviewer Award</strong>.
-                </li>
-                <li>
-                    Reviewer for venues including ICML, NeurIPS, KDD, ICCV,
-                    NAACL, ICRA, and IEEE Robotics and Automation Letters.
-                </li>
-                <li>
-                    Supervision of 10+ Bachelor’s and Master’s theses in machine learning,
-                    uncertainty quantification, neuro-symbolic learning, LLM-based systems,
-                    and human–AI interaction.
-                </li>
-            </ul>
-        </section>
-
-        <div class="footer">
-            © 2026 Achref Doula · Last updated August 2026
-        </div>
-    </main>
-
+<div class="page">
+<header class="site-header">
+  <div class="site-name">Achref Doula</div>
+  <nav class="site-nav" aria-label="Primary navigation">
+    <a href="#research">Research</a><a href="#news">News</a><a href="#publications">Publications</a><a href="#academic">Academic Profile</a><a href="AD_cv.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+  </nav>
+</header>
+<main>
+<section class="hero" id="research">
+  <div><img src="images/personal.jpg" alt="Portrait of Achref Doula" class="profile-img"></div>
+  <div>
+    <div class="role">Postdoctoral Researcher · TU Darmstadt</div>
+    <h1>Reasoning and decision making under uncertainty</h1>
+    <p>I am a postdoctoral researcher at the <a href="https://www.informatik.tu-darmstadt.de/telekooperation/telecooperation_group/index.en.jsp" target="_blank" rel="noopener noreferrer">Telecooperation Lab</a>, Technical University of Darmstadt. I received my PhD in Computer Science from TU Darmstadt in 2025 (<em>summa cum laude</em>) for my dissertation <a href="https://tuprints.ulb.tu-darmstadt.de/entities/publication/def1bc76-67d6-4009-b681-8daf2dd4eee7" target="_blank" rel="noopener noreferrer"><em>On Uncertainty-Aware Perception, Prediction, and Planning</em></a>.</p>
+    <p>My research develops methods for <strong>reliable reasoning and decision making under uncertainty</strong>. It connects statistical reliability in machine learning with <strong>structured reasoning</strong>, <strong>human–AI interaction</strong>, and the <strong>post-training and evaluation of large language models</strong>. I am particularly interested in systems that must remain dependable when data distributions, sensing conditions, model representations, or decision contexts change after development.</p>
+    <p>This agenda spans uncertainty quantification and conformal prediction under distribution shift, reliable reasoning and post-training of foundation models, and decision mechanisms that use uncertainty to govern interaction between AI systems and human users.</p>
+    <div class="research-interests"><strong>Research Interests:</strong> Uncertainty Quantification &amp; Conformal Prediction · Distribution Shift &amp; Calibration Transfer · Foundation Models &amp; LLM Reasoning · LLM Post-Training &amp; Evaluation · Neuro-Symbolic AI · Human–AI Decision Making</div>
+    <div class="contact-row"><span><i class="fas fa-map-marker-alt"></i>Darmstadt, Germany</span><a href="mailto:achref.doula@gmail.com"><i class="fas fa-envelope"></i>Email</a><a href="https://scholar.google.de/citations?user=tHuVxtUAAAAJ" target="_blank" rel="noopener noreferrer"><i class="ai ai-google-scholar"></i>Scholar</a><a href="https://linkedin.com/in/achref-doula" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i>LinkedIn</a><a href="https://gitlab.com/achref.d" target="_blank" rel="noopener noreferrer"><i class="fab fa-gitlab"></i>GitLab</a></div>
+  </div>
+</section>
+<section class="section" id="news">
+  <div class="section-header"><h2 class="section-title">News</h2><div class="section-note">Recent research, awards, and academic activities</div></div>
+  <ul class="news-list">
+    <li><span class="news-date">May 2026</span><span>Received the <strong>ICML 2026 Gold Reviewer Award</strong>.</span></li>
+    <li><span class="news-date">May 2026</span><span><em>Conformal Calibration Transfer</em> accepted at <strong>ICML 2026</strong>.</span></li>
+    <li><span class="news-date">May 2026</span><span><em>Position: Uncertainty is a Strategic Signal in Human–AI Decision Making</em> accepted at <strong>ICML 2026</strong>.</span></li>
+    <li><span class="news-date">Jul 2025</span><span>Began a research visit at <strong>Tongji University, Shanghai</strong>, focusing on LLM-based structured reasoning and decision making for urban planning.</span></li>
+    <li><span class="news-date">Jun 2025</span><span>PhD in Computer Science awarded <em>summa cum laude</em> at TU Darmstadt.</span></li>
+  </ul>
+</section>
+<section class="section" id="publications">
+  <div class="section-header"><h2 class="section-title">Selected Publications</h2><div class="section-note">Selected work · <a href="https://scholar.google.de/citations?user=tHuVxtUAAAAJ" target="_blank" rel="noopener noreferrer">full list on Google Scholar</a></div></div>
+  <ul class="pub-list">
+    <li class="pub-item"><div class="pub-venue">ICML 2026</div><div><div class="pub-title">Conformal Calibration Transfer</div><div class="pub-authors"><span class="me">Achref Doula</span></div><div class="pub-meta"><span class="note">Single-author paper</span><a href="https://icml.cc/virtual/2026/poster/61667" target="_blank">ICML</a><a href="https://openreview.net/pdf?id=nw5aekrzBa" target="_blank">OpenReview</a><a href="papers/10054_Conformal_Calibration_Tr.pdf" target="_blank">PDF</a><a href="https://gitlab.com/achref.d/tcc" target="_blank">Code</a></div></div></li>
+    <li class="pub-item"><div class="pub-venue">ICML 2026</div><div><div class="pub-title">Position: Uncertainty is a Strategic Signal in Human–AI Decision Making</div><div class="pub-authors"><span class="me">Achref Doula</span>, Otthein Herzog, Siegfried Zhiqiang Wu, Max Mühlhäuser</div><div class="pub-meta"><a href="https://icml.cc/virtual/2026/poster/67056" target="_blank">ICML</a><a href="https://openreview.net/pdf?id=vzbCqSwKEI" target="_blank">OpenReview</a><a href="papers/352_Position_Uncertainty_is_a_.pdf" target="_blank">PDF</a><a href="https://gitlab.com/achref.d/gt-haii-position" target="_blank">Code</a></div></div></li>
+    <li class="pub-item"><div class="pub-venue">NAACL 2025</div><div><div class="pub-title">CLEAR-Command: Coordinated Listening, Extraction, and Allocation for Emergency Response with Large Language Models</div><div class="pub-authors"><span class="me">Achref Doula</span>, Bela Bohlender, Max Mühlhäuser, Alejandro Sanchez Guinea</div><div class="pub-meta"><a href="https://aclanthology.org/2025.naacl-demo/" target="_blank">ACL Anthology</a><a href="https://gitlab.com/achref.d/clear-command" target="_blank">Code</a></div></div></li>
+    <li class="pub-item"><div class="pub-venue">ICSE 2025</div><div><div class="pub-title">MARQ: Engineering Mission-Critical AI-Based Software with Automated Result Quality Adaptation</div><div class="pub-authors">U. Gropengießer, E. Dietz, F. Brandherm, <span class="me">Achref Doula</span>, O. Abboud, X. Xiao, Max Mühlhäuser</div></div></li>
+    <li class="pub-item"><div class="pub-venue">CoRL 2024</div><div><div class="pub-title">Conformal Prediction for Semantically-Aware Autonomous Perception in Urban Environments</div><div class="pub-authors"><span class="me">Achref Doula</span>, Tobias Güdelhöfer, Max Mühlhäuser, Alejandro Sanchez Guinea</div><div class="pub-meta"><a href="https://proceedings.mlr.press/v270/doula25a.html" target="_blank">PMLR</a><a href="https://openreview.net/forum?id=aaY5fVFMVf" target="_blank">OpenReview</a><a href="https://gitlab.com/achref.d/krps" target="_blank">Code</a></div></div></li>
+    <li class="pub-item"><div class="pub-venue">IROS 2024</div><div><div class="pub-title">NeSyMoF: A Neuro-Symbolic Model for Motion Forecasting</div><div class="pub-authors"><span class="me">Achref Doula</span>, Huijie Yin, Max Mühlhäuser, Alejandro Sanchez Guinea</div><div class="pub-meta"><a href="https://ieeexplore.ieee.org/document/10801779/" target="_blank">IEEE</a></div></div></li>
+    <li class="pub-item"><div class="pub-venue">arXiv 2025</div><div><div class="pub-title">SafePath: Conformal Prediction for Safe LLM-Based Autonomous Navigation</div><div class="pub-authors"><span class="me">Achref Doula</span>, Max Mühlhäuser, Alejandro Sanchez Guinea</div><div class="pub-meta"><a href="https://arxiv.org/abs/2505.09427" target="_blank">arXiv</a><a href="https://arxiv.org/pdf/2505.09427" target="_blank">PDF</a></div></div></li>
+  </ul>
+</section>
+<section class="section" id="academic">
+  <div class="section-header"><h2 class="section-title">Academic Profile</h2><div class="section-note">Funding, honors, service, supervision, and teaching</div></div>
+  <div class="academic-grid">
+    <div class="mini-section"><h3>Funding &amp; Honors</h3><ul class="compact-list"><li>Software Campus Fellowship and BMBF research grant (<strong>EUR 100,000</strong>), 2022–2025; project lead for SemUrban.</li><li><strong>ICML 2026 Gold Reviewer Award</strong>.</li><li>PhD awarded <em>summa cum laude</em>, TU Darmstadt, 2025.</li></ul></div>
+    <div class="mini-section"><h3>Service &amp; Supervision</h3><ul class="compact-list"><li>Reviewer for ICML, NeurIPS, KDD, ICCV, NAACL, ICRA, and IEEE Robotics and Automation Letters.</li><li>Supervised 10+ Bachelor’s and Master’s theses across machine learning, uncertainty quantification, neuro-symbolic learning, LLM-based systems, and human–AI interaction.</li><li>Teaching: Distributed Algorithms; Ubiquitous Computing – Machine Learning.</li></ul></div>
+  </div>
+</section>
+<footer class="footer">© 2026 Achref Doula · Last updated August 2026</footer>
+</main>
 </div>
 </body>
 </html>
